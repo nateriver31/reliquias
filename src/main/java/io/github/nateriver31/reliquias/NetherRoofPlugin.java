@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class NetherRoofPlugin extends JavaPlugin {
+public class NetherRoofPlugin extends JavaPlugin {
     private ChunkJournal journal;
     private ChunkTickets tickets;
     private EditEngine engine;
