@@ -1,0 +1,19 @@
+name: ReliquiasNether
+version: 1.0.0
+main: io.github.nateriver31.reliquias.NetherRoofPlugin
+api-version: '26.2'
+description: Pergaminhos para acesso e expansão segura do teto do Nether.
+author: nateriver31
+softdepend: [CoreProtect, WorldGuard]
+commands:
+  pergaminho:
+    description: Entrega os pergaminhos especiais do Nether.
+    usage: /pergaminho dar <jogador> <flor|creeper> [quantidade]
+    permission: reliquias.admin
+permissions:
+  reliquias.admin:
+    default: op
+  reliquias.flor:
+    default: true
+  reliquias.creeper:
+    default: true

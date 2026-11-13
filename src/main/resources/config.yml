@@ -1,0 +1,12 @@
+# Apenas mundos Nether desta lista podem ser modificados.
+# [] permite qualquer mundo cuja dimensão seja NETHER; outros mundos nunca são editados.
+mundos-permitidos: []
+
+# Limites globais, compartilhados por todos os jogadores.
+edicao:
+  verificacoes-por-tick: 4096
+  milissegundos-por-tick: 2.0
+  chunks-carregando: 2
+  maximo-chunks-pendentes: 512
+
+# Alturas, tamanhos das áreas, contagem e cooldown são regras fixas do plugin.
