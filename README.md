@@ -2,9 +2,11 @@
 
 Plugin Java 25 para liberar gradualmente um teto customizado do Nether. Usa somente `FLOWER_BANNER_PATTERN` e `CREEPER_BANNER_PATTERN`, com identificação persistente própria. Padrões vanilla comuns, mesmo renomeados, não ativam poderes. Não exige mod ou resource pack; recebe as interações Java e as traduzidas por Geyser/Floodgate.
 
+**[Baixar o JAR 1.0.0 — Paper 26.2 / Java 25](https://github.com/nateriver31/reliquias/releases/download/build-3/reliquias-nether-1.0.0.jar)** · [Release e checksum](https://github.com/nateriver31/reliquias/releases/tag/build-3). Build aprovado em 27 testes automatizados; o teste com servidor e clientes reais continua descrito abaixo.
+
 ## Compilar e testar
 
-O workflow [Compilar plugin Paper 26.2](../../actions) roda em cada envio para `main` e também pode ser iniciado manualmente em **Actions → Run workflow**. Depois que os 27 testes passarem, ele disponibiliza o JAR como artefato da execução e em **Releases**, junto ao checksum SHA-256. Builds que falham ou ignoram testes não publicam o plugin.
+O workflow [Compilar plugin Paper 26.2](https://github.com/nateriver31/reliquias/actions) roda em cada envio para `main` e também pode ser iniciado manualmente em **Actions → Run workflow**. Depois que os 27 testes passarem, ele disponibiliza o JAR como artefato da execução e em **Releases**, junto ao checksum SHA-256. Builds que falham ou ignoram testes não publicam o plugin.
 
 Com JDK 25 e Maven 3.9.9 ou superior:
 

@@ -1,14 +1,18 @@
 # Validação desta implementação
 
+## Build e JAR verificados
+
+- [Execução aprovada no GitHub Actions](https://github.com/nateriver31/reliquias/actions/runs/43346937640), código `95c2168`, Java 25 e Paper API `26.2.build.111-stable`.
+- **27 testes aprovados**, incluindo 19 do núcleo e 8 de integração MockBukkit. O workflow exige a execução completa, sem falhas, erros ou testes ignorados, antes de publicar o JAR.
+- [JAR 1.0.0 e checksum SHA-256](https://github.com/nateriver31/reliquias/releases/tag/build-3) publicados. O JAR foi baixado novamente no ambiente cloud, passou na verificação do checksum e contém as classes do plugin, `plugin.yml` e `config.yml` esperados, sem dependências de teste.
+- Corrigido o carregamento em MockBukkit: a classe principal precisa permitir a subclasse usada pelo framework de integração.
+
+## Instância cloud
+
 - JDK Temurin 25.0.5+8 e Maven 3.9.9 instalados em `/workspace/.tools`, com SHA-256/SHA-512 oficiais verificados.
-- `bash scripts/bootstrap-cloud.sh`: executado com sucesso. A CA pública do proxy é adicionada a um truststore local, preservando TLS.
-- `bash scripts/test-core.sh`: **19 testes executados, 19 aprovados**, nenhum ignorado ou abortado. Verificam a transformação completa de chunks, preservação de construções, orçamento incremental, conflitos/proteções, deduplicação de áreas sobrepostas, limites da fila, coordenadas negativas, isolamento por mundo, persistência e corrupção de registros, e cooldown.
-- `bash scripts/cloud-mvn.sh -B -ntp -C verify`: **bloqueado no download da API do Paper por HTTP 403 da política de rede**. O build completo e os 8 testes `ScrollIntegrationTest` com MockBukkit ainda não foram executados. Não há JAR compilado/validado para instalar.
-- O rascunho do ambiente inclui os domínios oficiais do Paper. Após aplicar o acesso nas configurações, executar novamente o build Maven (usar `-U` na primeira tentativa, para invalidar o resultado de resolução em cache).
-- Não foi executado servidor Paper real nem clientes Java/Bedrock. O roteiro de aceitação, incluindo CoreProtect e proteções, está no README. Nenhum mundo de produção foi acessado.
+- Bootstrap e os **19 testes do núcleo passaram localmente**, sem testes ignorados ou abortados.
+- O build completo **local** ainda está bloqueado por HTTP 403 ao acessar a API Paper. O resultado completo acima foi obtido no GitHub Actions, e não nesta máquina. O rascunho inclui os domínios oficiais do Paper e `api.github.com`; é necessário aplicar essa configuração para compilar localmente e usar a API GitHub. Depois da aplicação, executar `bash scripts/cloud-mvn.sh -B -ntp -U -C verify`.
 
-Os testes do núcleo não estabelecem a compilação ou compatibilidade de execução das classes que usam a API Paper. O ambiente e o plugin ainda precisam dessa validação após a liberação de rede.
+## Testes em servidor
 
-## Build no GitHub
-
-O workflow `.github/workflows/build.yml` compila e executa as duas suítes no GitHub Actions, com Java 25. Exige pelo menos 27 testes, sem falhas, erros ou testes ignorados, antes de disponibilizar o JAR. Uma execução verde e seu artefato comprovam o resultado desse build; a existência do workflow, por si só, não comprova compilação bem-sucedida. O teste de aceitação em servidor real permanece separado.
+Não foi executado servidor Paper real nem clientes Java/Bedrock. O roteiro de aceitação com as versões reais de Geyser/Floodgate, CoreProtect e proteções está no README. A aprovação dos testes automatizados não substitui esse teste funcional. Nenhum mundo de produção foi acessado.
